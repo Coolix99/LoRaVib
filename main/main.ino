@@ -1,5 +1,8 @@
 #include <Arduino.h>
 
+#include "TaskManager.h"
+#include "Task.h"
+
 TaskManager mainTaskManager;
 
 void setup() {

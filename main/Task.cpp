@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 class Task {
 public:
     virtual void update() = 0; // Method to update task status
@@ -24,7 +26,7 @@ public:
             if (batteryStatus != lastBatteryStatus) {
                 lastBatteryStatus = batteryStatus;
                 // Status has changed, create a message task
-                mainTaskManager.addTask(new MessageTask("..."));
+                //mainTaskManager.addTask(new MessageTask("..."));
             }
         }
     }

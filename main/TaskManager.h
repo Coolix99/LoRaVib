@@ -1,3 +1,5 @@
+#include "Task.h"
+
 class TaskManager {
 private:
     Task* tasks[10]; // TODO: manage positions better

@@ -1,3 +1,4 @@
+#pragma once
 class Task {
 public:
     virtual void update() = 0; // Method to update task status
@@ -11,30 +12,13 @@ private:
     int lastBatteryStatus = -1; // to track changes in battery status
 
 public:
-    BatterySupervisorTask(int analogPin) : pin(analogPin) {
-        pinMode(pin, INPUT);
-    }
+    BatterySupervisorTask(int analogPin);
 
-    void update() override {
-        int batteryVoltage = analogRead(pin);
-        int newStatus = determineBatteryStatus(batteryVoltage);
-
-        if (newStatus != batteryStatus) {
-            batteryStatus = newStatus;
-            if (batteryStatus != lastBatteryStatus) {
-                lastBatteryStatus = batteryStatus;
-                // Status has changed, create a message task
-                mainTaskManager.addTask(new MessageTask("..."));
-            }
-        }
-    }
+    void update() override ;
+    
 
 private:
-    int determineBatteryStatus(int voltage) {
-        if (voltage < 512) return 2; // Example thresholds
-        if (voltage < 768) return 1;
-        return 0;
-    }
+    int determineBatteryStatus(int voltage) ;
 };
 
 class MessageTask : public Task {
@@ -45,9 +29,6 @@ private:
 public:
     MessageTask(String msg) : message(msg) {}
 
-    void update() override {
-        Serial.println(message);
-        isComplete = true; // Mark as complete after showing the message
-    }
+    void update() override ;
 
 };

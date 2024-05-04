@@ -1,9 +1,11 @@
 #include <Arduino.h>
 #include <SPI.h>
+#include <LoRa.h>
 
 #include "CommandDecoder.h"
 #include "TaskManager.h"
 #include "Task.h"
+#include "DefinitionsAndSettings.h"
 
 
 

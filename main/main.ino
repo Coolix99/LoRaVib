@@ -4,22 +4,19 @@
 
 #include "CommandDecoder.h"
 #include "TaskManager.h"
-#include "Task.h"
+#include "SerialPrintTask.h"
 #include "DefinitionsAndSettings.h"
-
-
 
 TaskManager mainTaskManager;
 
 void onReceive(int packetSize) {
   if (packetSize) {
     // Read incoming message
-    String incoming = "";
+    String incoming = "Message received: ";
     while (LoRa.available()) {
       incoming += (char)LoRa.read();
     }
-    Serial.print("Message received: ");
-    Serial.println(incoming);
+    mainTaskManager.addTask(new SerialPrintTask(incoming));
   }
 }
 
@@ -31,7 +28,7 @@ void setup() {
   LoRa.setPins(SPI_SS_Pin, SPI_RST_Pin, SPI_DI0_Pin);
 
   // Initialize LoRa library
-  if (!LoRa.begin(915E6)) { // Set frequency to 915 MHz (adjust according to your region)
+  if (!LoRa.begin(915E6)) { 
     Serial.println("Starting LoRa failed!");
     while (1);
   }
@@ -52,8 +49,7 @@ void loop() {
   LoRa.endPacket();
   counter++; 
   LoRa.receive();
+  mainTaskManager.updateTasks();
   delay(3000);         
-
-  //mainTaskManager.updateTasks();
 
 }

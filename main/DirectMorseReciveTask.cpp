@@ -9,15 +9,15 @@ DirectMorseReciveTask::DirectMorseReciveTask(){
 }
 
 void DirectMorseReciveTask::update(){
-  bool currentState=digitalRead(testButton);
   unsigned long currentTime=millis();
-  if ((currentState==lastState) && (currentTime-lastUpdate<1000))
+  if (lastState!=targetPegel){
+    digitalWrite(testLED,targetPegel);
+    lastState=targetPegel;
+    lastUpdate=currentTime;
     return;
-  LoRa.beginPacket();
-  LoRa.print(currentState);
-  LoRa.endPacket();
-  LoRa.receive();
-  Serial.println(currentState);
-  lastState=currentState;
-  lastUpdate=currentTime;
+  }
+  
+  if (currentTime-lastUpdate>1500)
+    digitalWrite(testLED,0);
+    lastUpdate=currentTime;
 }

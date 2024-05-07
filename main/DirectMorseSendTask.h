@@ -1,10 +1,10 @@
 #include "Task.h"
-class DirectMorseTask : public Task {
+class DirectMorseSendTask : public Task {
 private:
     bool lastState;
     unsigned long lastUpdate;
 public:
-    DirectMorseTask();
+    DirectMorseSendTask();
 
     void update() override ;
 

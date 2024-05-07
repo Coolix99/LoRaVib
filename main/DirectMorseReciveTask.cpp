@@ -1,13 +1,14 @@
-#include "directMorseTask.h"
+#include "DirectMorseReciveTask.h"
 #include <LoRa.h>
 #include "DefinitionsAndSettings.h"
 
-DirectMorseTask::DirectMorseTask(){
+DirectMorseReciveTask::DirectMorseReciveTask(){
   lastUpdate=millis();
   lastState=0;
+  targetPegel=0;
 }
 
-void DirectMorseTask::update(){
+void DirectMorseReciveTask::update(){
   bool currentState=digitalRead(testButton);
   unsigned long currentTime=millis();
   if ((currentState==lastState) && (currentTime-lastUpdate<1000))

@@ -4,11 +4,14 @@
 
 #include "CommandDecoder.h"
 #include "TaskManager.h"
-//#include "SerialPrintTask.h"
-#include "directMorseTask.h"
+
+#include "DirectMorseSendTask.h"
+#include "DirectMorseReciveTask.h"
+
 #include "DefinitionsAndSettings.h"
 
 TaskManager mainTaskManager;
+DirectMorseReciveTask mainDirectMorseReciveTask;
 
 void onReceive(int packetSize) {
   if (packetSize) {
@@ -18,7 +21,7 @@ void onReceive(int packetSize) {
       incoming += (char)LoRa.read();
     }
      Serial.println(incoming);
-    
+    mainDirectMorseReciveTask.targetPegel=0;
   }
 }
 
@@ -42,7 +45,8 @@ void setup() {
   
   pinMode(testLED,OUTPUT);
 
-  mainTaskManager.addTask(new DirectMorseTask());
+  mainTaskManager.addTask(new DirectMorseSendTask());
+  mainTaskManager.addTask(&mainDirectMorseReciveTask);
 
   checkSerialCommands();
   

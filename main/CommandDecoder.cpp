@@ -14,6 +14,7 @@ note: to avoid errors in communication it makes sense to send the execution time
 */
 #include "CommandDecoder.h"
 #include <esp_wifi.h>
+#include <LoRa.h>
 
 String processCommandContent(String request[]) {  //add custom commands here
   String com = request[0];                        //use com (for command) to make the code more readable and reduce errors
@@ -119,6 +120,11 @@ String processCommandContent(String request[]) {  //add custom commands here
     } else {
       returnString = "restart failed, wait 5 seconds and try again";
     }
+  }else if (com == "SENDLORA") {
+  LoRa.beginPacket();
+  LoRa.print(request[1]);
+  LoRa.endPacket();
+  LoRa.receive();
   } else if (com == "") {
   } else {
     Serial.println("unknown command: " + com);

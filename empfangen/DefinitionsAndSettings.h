@@ -19,12 +19,12 @@
 #define WS2812B_Pin				14
 #define batteryVoltageAdc_Pin	36
 
-#define SPI_SS_Pin				38		// Example SS (Slave Select) pin
-#define SPI_RST_Pin				40		// Example Reset pin
-#define SPI_DI0_Pin				17		// Example DIO0 pin
-#define SPI_SCK_Pin				36		// Example SCK pin (Clock)
-#define SPI_MISO_Pin			21		// Example MISO pin (Master In Slave Out)
-#define SPI_MOSI_Pin			34		// Example MOSI pin (Master Out Slave In)
+#define SPI_SS_Pin				5		// Example SS (Slave Select) pin
+#define SPI_RST_Pin				16		// Example Reset pin
+#define SPI_DI0_Pin				2		// Example DIO0 pin
+#define SPI_SCK_Pin				18		// Example SCK pin (Clock)
+#define SPI_MISO_Pin			19		// Example MISO pin (Master In Slave Out)
+#define SPI_MOSI_Pin			23		// Example MOSI pin (Master Out Slave In)
 
 
 //define channels

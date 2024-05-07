@@ -33,7 +33,7 @@ void setup() {
     while (1);
   }
   Serial.println("LoRa Initializing OK!");
-  
+  LoRa.setSyncWord(0x34);
   LoRa.onReceive(onReceive);
   
 }

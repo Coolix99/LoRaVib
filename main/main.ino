@@ -47,13 +47,12 @@ void setup() {
 
   mainTaskManager.addTask(new DirectMorseSendTask());
   mainTaskManager.addTask(&mainDirectMorseReciveTask);
-
-  checkSerialCommands();
   
 }
 
 
 void loop() {
   mainTaskManager.updateTasks();
-  delay(100);         
+  delay(100);
+  checkSerialCommands();
 }

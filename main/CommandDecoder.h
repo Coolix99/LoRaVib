@@ -6,7 +6,7 @@ created 1.5.2024
 #ifndef CommandDecoder_h
 #define CommandDecoder_h
 
-#define deviceName "CommandDecoderExample_ESP32"
+#define deviceName "Digibone Babblefish"
 
 #include <EEPROM.h>
 #define EEPROM_SIZE 100

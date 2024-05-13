@@ -120,9 +120,11 @@ String processCommandContent(String request[]) {  //add custom commands here
     } else {
       returnString = "restart failed, wait 5 seconds and try again";
     }
-  }else if (com == "SENDLORA") {
+  } else if (com == "LORASEND") {
+//use like LORASEND,type,payload
   LoRa.beginPacket();
-  LoRa.print(request[1]);
+  LoRa.print(request[1].toInt());
+  LoRa.print(request[2]);
   LoRa.endPacket();
   LoRa.receive();
   } else if (com == "") {

@@ -2,6 +2,7 @@
 #include <LoRa.h>
 #include "DefinitionsAndSettings.h"
 
+
 DirectMorseSendTask::DirectMorseSendTask(){
   lastUpdate=millis();
   lastState=0;
@@ -16,7 +17,7 @@ void DirectMorseSendTask::update(){
   LoRa.print(currentState);
   LoRa.endPacket();
   LoRa.receive();
-  Serial.println(currentState);
+  Serial.println("send: "+String(currentState));
   lastState=currentState;
   lastUpdate=currentTime;
 }

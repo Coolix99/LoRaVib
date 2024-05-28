@@ -28,13 +28,31 @@
 #define SPI_MOSI_Pin			23		// Example MOSI pin (Master Out Slave In)
 */
 
-#define SPI_SS_Pin				38		// Example SS (Slave Select) pin
-#define SPI_RST_Pin				40		// Example Reset pin
-#define SPI_DI0_Pin				10		// Example DIO0 pin
-#define SPI_SCK_Pin				36		// Example SCK pin (Clock)
-#define SPI_MISO_Pin			21		// Example MISO pin (Master In Slave Out)
-#define SPI_MOSI_Pin			34		// Example MOSI pin (Master Out Slave In)
+//#define BOARD_S2_RAW
+#define BOARD_V1
 
+#ifdef BOARD_S2_RAW
+  #define SPI_SS_Pin				38		// Example SS (Slave Select) pin
+  #define SPI_RST_Pin				40		// Example Reset pin
+  #define SPI_DI0_Pin				10		// Example DIO0 pin
+  #define SPI_SCK_Pin				36		// Example SCK pin (Clock)
+  #define SPI_MISO_Pin			21		// Example MISO pin (Master In Slave Out)
+  #define SPI_MOSI_Pin			34		// Example MOSI pin (Master Out Slave In)
+
+#elif defined(BOARD_V1)
+  #define SPI_SS_Pin				34		// Example SS (Slave Select) pin
+  #define SPI_RST_Pin				21		// Example Reset pin
+  #define SPI_DI0_Pin				10		// Example DIO0 pin
+  #define SPI_SCK_Pin				36		// Example SCK pin (Clock)
+  #define SPI_MISO_Pin			40		// Example MISO pin (Master In Slave Out)
+  #define SPI_MOSI_Pin			38		// Example MOSI pin (Master Out Slave In)
+
+  #define touchButtonLeft_Pin   13
+  #define touchButtonLeft_Pin   14
+
+#else
+    #error "No board defined. Please define a board (e.g., BOARD_A or BOARD_B)."
+#endif
 
 //define channels
 #define vibrationMotor_Channel	2

@@ -13,6 +13,7 @@
 TaskManager mainTaskManager;
 DirectMorseReciveTask mainDirectMorseReciveTask;
 
+
 void onReceive(int packetSize) {
   if (packetSize) {
     // Read incoming message
@@ -31,7 +32,7 @@ void setup() {
   SPI.begin(SPI_SCK_Pin, SPI_MISO_Pin, SPI_MOSI_Pin, SPI_SS_Pin);
 
   Serial.begin(9600);  // Start the serial communication
-
+  delay(7000);
   commandDecoderSetup();
 
   pinMode(testLED, OUTPUT);

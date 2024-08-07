@@ -10,11 +10,13 @@
 #include "TouchButton.h"
 
 #include "DefinitionsAndSettings.h"
+#include "MenuStates.h"
 
 TaskManager mainTaskManager;
 DirectMorseReciveTask mainDirectMorseReciveTask;
 TouchButton leftTouchButton(touchButtonLeft_Pin);
 TouchButton rightTouchButton(touchButtonRight_Pin);
+MenuStates mainMenuStates;
 
 
 void onReceive(int packetSize) {
@@ -57,6 +59,8 @@ void setup() {
   mainTaskManager.addTask(&mainDirectMorseReciveTask);
   mainTaskManager.addTask(&leftTouchButton);
   mainTaskManager.addTask(&rightTouchButton);
+
+  mainMenuStates.output_state=FULL;
 }
 
 

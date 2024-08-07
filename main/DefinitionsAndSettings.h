@@ -48,7 +48,7 @@
   #define SPI_MOSI_Pin			38		// Example MOSI pin (Master Out Slave In)
 
   #define touchButtonLeft_Pin   13
-  #define touchButtonLeft_Pin   14
+  #define touchButtonRight_Pin   14
 
 #else
     #error "No board defined. Please define a board (e.g., BOARD_A or BOARD_B)."

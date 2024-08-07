@@ -1,4 +1,5 @@
 #include "Task.h"
+
 class DirectMorseReciveTask : public Task {
 private:
     bool lastState;

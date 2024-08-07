@@ -28,8 +28,8 @@
 #define SPI_MOSI_Pin			23		// Example MOSI pin (Master Out Slave In)
 */
 
-#define BOARD_S2_RAW
-//#define BOARD_V1
+//#define BOARD_S2_RAW
+#define BOARD_V1
 
 #ifdef BOARD_S2_RAW
   #define SPI_SS_Pin				38		// Example SS (Slave Select) pin

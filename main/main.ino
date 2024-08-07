@@ -7,11 +7,14 @@
 
 #include "DirectMorseSendTask.h"
 #include "DirectMorseReciveTask.h"
+#include "TouchButton.h"
 
 #include "DefinitionsAndSettings.h"
 
 TaskManager mainTaskManager;
 DirectMorseReciveTask mainDirectMorseReciveTask;
+TouchButton leftTouchButton(13);
+TouchButton rightTouchButton(14);
 
 
 void onReceive(int packetSize) {
@@ -50,7 +53,7 @@ void setup() {
   LoRa.setSyncWord(0x34);
   LoRa.onReceive(onReceive);
 
-  mainTaskManager.addTask(new DirectMorseSendTask());
+  mainTaskManager.addTask(new DirectMorseSendTask(&leftTouchButton));
   mainTaskManager.addTask(&mainDirectMorseReciveTask);
 }
 

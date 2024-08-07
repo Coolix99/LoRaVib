@@ -3,13 +3,13 @@
 #include "DefinitionsAndSettings.h"
 
 
-DirectMorseSendTask::DirectMorseSendTask(){
-  lastUpdate=millis();
+DirectMorseSendTask::DirectMorseSendTask(TouchButton* tb): sendTouchButton(tb){
   lastState=0;
+  lastUpdate=millis();
 }
 
 void DirectMorseSendTask::update(){
-  bool currentState=digitalRead(testButton);
+  bool currentState=sendTouchButton->getTouched();
   unsigned long currentTime=millis();
   if ((currentState==lastState) && (currentTime-lastUpdate<1000))
     return;

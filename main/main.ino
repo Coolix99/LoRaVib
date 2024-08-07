@@ -11,6 +11,7 @@
 
 #include "DefinitionsAndSettings.h"
 #include "MenuStates.h"
+#include "OperationStateTask.h"
 
 TaskManager mainTaskManager;
 DirectMorseReciveTask mainDirectMorseReciveTask;
@@ -55,12 +56,15 @@ void setup() {
   LoRa.setSyncWord(0x34);
   LoRa.onReceive(onReceive);
 
+  mainMenuStates.output_state=FULL;
+  
   mainTaskManager.addTask(new DirectMorseSendTask(&leftTouchButton));
   mainTaskManager.addTask(&mainDirectMorseReciveTask);
   mainTaskManager.addTask(&leftTouchButton);
   mainTaskManager.addTask(&rightTouchButton);
+  mainTaskManager.addTask(new OperationStateTask(&mainMenuStates, &rightTouchButton));
 
-  mainMenuStates.output_state=FULL;
+  
 }
 
 

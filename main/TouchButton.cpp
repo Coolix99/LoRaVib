@@ -8,18 +8,23 @@
 #define morseThersshold_pause 500
 
 TouchButton::TouchButton(int p)
-  : pin(p), lastState(0), currentState(0), rising(0), falling(0), lastChangeTime(0) {
+  : pin(p), lastState(0), currentState(0), rising(0), falling(0), lastChangeTime(0), morseDecoderPressDetected(0) {
 }
 
 void TouchButton::update() {
   int value = touchRead(pin);
   if (value < THRESHOLD1) {
     //morseCodeAssembler
-    Serial.println("release deteccted");
-    if (millis() - lastChangeTime < morseThreshhold_press) {
-      rawMorseBuffer += ".";
-    } else {
-      rawMorseBuffer += "_";
+    if (morseDecoderPressDetected) {
+      morseDecoderPressDetected = false;
+      Serial.print("release deteccted ");
+      Serial.println(millis() - lastChangeTime);
+      if (millis() - lastChangeTime < morseThreshhold_press) {
+        rawMorseBuffer += ".";
+      } else {
+        rawMorseBuffer += "_";
+      }
+      Serial.println(rawMorseBuffer);
     }
     if (millis() - lastChangeTime > morseThersshold_pause) {
       //add morse character to morseMessageBuffer
@@ -31,9 +36,11 @@ void TouchButton::update() {
   } else if (value < THRESHOLD2) {
     currentState = 1;
     lastChangeTime = millis();
+    morseDecoderPressDetected = true;
   } else {
     currentState = 2;
     lastChangeTime = millis();
+    morseDecoderPressDetected = true;
   }
 
   if (currentState > lastState) {
@@ -82,6 +89,6 @@ bool TouchButton::getFallingPressed() {
   return falling == 1;
 }
 
-String popBuffer() {
+String TouchButton::popBuffer() {
   return "";
 }

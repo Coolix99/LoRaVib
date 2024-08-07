@@ -9,6 +9,11 @@ private:
     int currentState;
     int rising;
     int falling;
+    unsigned long lastChangeTime;
+
+    bool morseDecoderPressDetected;
+    String rawMorseBuffer;
+    String morseMessageBuffer;
 
 public:
     TouchButton(int p);
@@ -23,5 +28,6 @@ public:
     int getFalling();
     bool getFallingTouched();
     bool getFallingPressed();
+    String popBuffer();
     
 };

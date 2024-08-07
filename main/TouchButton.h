@@ -1,6 +1,10 @@
+#pragma once
+
+#include "Task.h"
+
 class TouchButton : public Task  {
 private:
-    int pin
+    int pin;
     int lastState;
     int currentState;
     int rising;

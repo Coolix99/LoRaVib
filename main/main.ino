@@ -13,8 +13,8 @@
 
 TaskManager mainTaskManager;
 DirectMorseReciveTask mainDirectMorseReciveTask;
-TouchButton leftTouchButton(13);
-TouchButton rightTouchButton(14);
+TouchButton leftTouchButton(touchButtonLeft_Pin);
+TouchButton rightTouchButton(touchButtonRight_Pin);
 
 
 void onReceive(int packetSize) {
@@ -55,6 +55,8 @@ void setup() {
 
   mainTaskManager.addTask(new DirectMorseSendTask(&leftTouchButton));
   mainTaskManager.addTask(&mainDirectMorseReciveTask);
+  mainTaskManager.addTask(&leftTouchButton);
+  mainTaskManager.addTask(&rightTouchButton);
 }
 
 

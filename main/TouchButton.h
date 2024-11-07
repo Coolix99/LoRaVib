@@ -14,6 +14,8 @@ private:
     bool morseDecoderPressDetected;
     String rawMorseBuffer;
     String morseMessageBuffer;
+    
+    String morseCodeLUT(String);
 
 public:
     TouchButton(int p);

@@ -92,3 +92,35 @@ bool TouchButton::getFallingPressed() {
 String TouchButton::popBuffer() {
   return "";
 }
+
+// Function to convert Morse code to a letter
+String TouchButton::morseCodeLUT(String morse) {
+     if (morse == ".-") return "A";
+    else if (morse == "-...") return "B";
+    else if (morse == "-.-.") return "C";
+    else if (morse == "-..") return "D";
+    else if (morse == ".") return "E";
+    else if (morse == "..-.") return "F";
+    else if (morse == "--.") return "G";
+    else if (morse == "....") return "H";
+    else if (morse == "..") return "I";
+    else if (morse == ".---") return "J";
+    else if (morse == "-.-") return "K";
+    else if (morse == ".-..") return "L";
+    else if (morse == "--") return "M";
+    else if (morse == "-.") return "N";
+    else if (morse == "---") return "O";
+    else if (morse == ".--.") return "P";
+    else if (morse == "--.-") return "Q";
+    else if (morse == ".-.") return "R";
+    else if (morse == "...") return "S";
+    else if (morse == "-") return "T";
+    else if (morse == "..-") return "U";
+    else if (morse == "...-") return "V";
+    else if (morse == ".--") return "W";
+    else if (morse == "-..-") return "X";
+    else if (morse == "-.--") return "Y";
+    else if (morse == "--..") return "Z";
+    else if (morse == ".-.-.") return "\n"; //used to end/execute a command
+    else return "?"; // Return "?" for unknown Morse code
+}
